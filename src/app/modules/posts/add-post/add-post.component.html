@@ -1,0 +1,22 @@
+<h3 class="mt-4">Add Post</h3>
+<div class="row mt-4">
+    <div class="col-lg-4">
+        <form [formGroup]="postForm" (ngSubmit)="addPost()">
+            <div class="mb-3">
+                <label for="">Title</label>
+                <input type="text" class="form-control" formControlName="title" />
+                <div *ngIf="(postForm.controls['title'].touched || submitted) && !postForm.controls['title'].valid">
+                    <span *ngIf="postForm.controls['title'].errors?.['required']" class="text-danger">Title is required</span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="">Description</label>
+                <textarea class="form-control" formControlName="description"></textarea>
+                <div *ngIf="(postForm.controls['description'].touched || submitted) && !postForm.controls['description'].valid">
+                    <span *ngIf="postForm.controls['description'].errors?.['required']" class="text-danger">Description is required</span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2" [disabled]="!postForm.valid">Add Post</button>
+        </form>
+    </div>
+</div>

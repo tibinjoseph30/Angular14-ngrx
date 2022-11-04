@@ -1,0 +1,24 @@
+<div class="d-flex align-items-center mt-4">
+    <h3>Post List</h3>
+    <button class="btn btn-primary ms-auto" [routerLink]="['/add-post']">Add post</button>
+</div>
+<table class="table table-bordered mt-4">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of postlist | async">
+        <td>{{ post.id }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.description }}</td>
+        <td>
+          <a class="btn btn-link p-0 text-decoration-none" [routerLink]="['/edit-post', post.id]">Edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
